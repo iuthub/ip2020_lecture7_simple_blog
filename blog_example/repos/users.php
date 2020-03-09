@@ -44,6 +44,11 @@ class UsersRepo {
 		return NULL;
 	}
 
+	public function checkUser($username, $pwd) {
+		$user=$this->getUser($username);
+		return $user && $user->pwd==$pwd;
+	}
+
 	public function addUser($user) {
 		if (!$this->getUser($user->username)) {
 			$this->addUserStmt->execute(array(

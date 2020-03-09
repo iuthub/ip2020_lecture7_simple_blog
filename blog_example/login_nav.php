@@ -1,15 +1,25 @@
-<?php 
+<?php
+	$isFailedLogin = false; 
 	if($isPost && $action=='login') {
-		$_SESSION['username'] = $_REQUEST['username'];
-		$_SESSION['pwd'] = $_REQUEST['pwd'];
-		$_SESSION['isAuth'] = TRUE;
-		redirect('index.php');
+		$username = $_REQUEST['username'];
+		$pwd = $_REQUEST['pwd'];
+
+		if ($usersRepo->checkUser($username, $pwd)) {
+			$_SESSION['user'] = serialize($usersRepo->getUser($username));
+			$_SESSION['isAuth'] = TRUE;
+			redirect('index.php');			
+		} else {
+			$isFailedLogin = true;
+		}
 	}
 ?>
 
 <!-- login nav -->
 <div class="nav">
 		<div class="navitem">
+			<?php if ($isFailedLogin): ?>
+				<span class="error">Incorrect login or password.</span>
+			<?php endif ?>
 			<input type="text" name="username" form="loginForm" placeholder="Username" />
 		</div>
 		<div class="navitem">
