@@ -1,3 +1,12 @@
+<?php 
+	if($isPost && $action=='login') {
+		$_SESSION['username'] = $_REQUEST['username'];
+		$_SESSION['pwd'] = $_REQUEST['pwd'];
+		$_SESSION['isAuth'] = TRUE;
+		redirect('index.php');
+	}
+?>
+
 <!-- login nav -->
 <div class="nav">
 		<div class="navitem">
@@ -15,3 +24,4 @@
 			<a href="register.php" class="btn">Register</a>
 		</div>
 </div>
+

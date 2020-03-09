@@ -56,6 +56,12 @@ input[type='text'], input[type='password'] {
 	margin: 5px;
 }
 
+.navitem-left {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+}
+
 .article {
 	background-color: #ffffcc;
 	border: 1px solid grey;

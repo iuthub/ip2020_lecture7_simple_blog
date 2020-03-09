@@ -1,5 +1,7 @@
 <?php  
 	session_start();
+
+	include('functions.php');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -12,5 +14,9 @@
 <body>
 	<div class="container">
 <?php  
-	include('login_nav.php');
+	if($_SESSION['isAuth']) {
+		include('logout_nav.php');
+	} else {
+		include('login_nav.php');
+	}
 ?>
