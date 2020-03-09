@@ -1,0 +1,85 @@
+* {
+	font-family: Arial, sans-serif;
+}
+
+body {
+	background-color: #ccffcc;
+}
+/*
+div {
+	border: 1px dashed red;
+}*/
+
+.container {
+	width: 80%;
+	margin: 5px auto;
+	padding: 10px;
+}
+
+input[type='submit'], input[type='text'], input[type='password'], .btn {
+	border: 1px solid blue;
+	font-size: 12pt;
+	background-color: lightgrey;
+	color: black;
+	padding: 5px;
+	display: block;
+	text-decoration: none;
+	cursor: pointer;
+	width: 100px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+input[type='text'], input[type='password'] {
+	background-color: white;
+	text-align: left;
+	width: 150px;
+}
+
+.main {
+	margin: 5px;
+	padding: 5px 0px;
+}
+
+.nav {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: stretch;
+	margin: 5px;
+	padding: 5px;
+	background-color: #ffffcc;
+	border: 1px solid grey;
+}
+
+.navitem {
+	margin: 5px;
+}
+
+.article {
+	background-color: #ffffcc;
+	border: 1px solid grey;
+	padding: 15px;
+}
+.article-header {
+	padding: 5px;
+}
+
+.article-header h2 {
+	margin: 5px 0px;
+}
+
+.article-body {
+	margin: 5px 0px;
+	padding: 5px;
+}
+.article-footer {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+}
+
+
+
