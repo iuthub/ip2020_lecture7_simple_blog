@@ -80,9 +80,7 @@
 			</table>
 			<?php  
 				if($isPost && $isValid) {
-					$user = new User();
-					$user->loadParams($username, $pwd, $name, $email);
-					$isOk= $usersRepo->addUser($user);
+					$isOk= $usersRepo->addUser($username, $pwd, $name, $email);
 					if ($isOk) redirect('index.php');
 				}
 			?>

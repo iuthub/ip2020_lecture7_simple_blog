@@ -5,7 +5,7 @@
 		$pwd = $_REQUEST['pwd'];
 
 		if ($usersRepo->checkUser($username, $pwd)) {
-			$_SESSION['user'] = serialize($usersRepo->getUser($username));
+			$_SESSION['user'] = $usersRepo->getUser($username);
 			$_SESSION['isAuth'] = TRUE;
 			redirect('index.php');			
 		} else {

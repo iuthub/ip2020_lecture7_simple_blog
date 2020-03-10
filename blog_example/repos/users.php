@@ -1,27 +1,5 @@
 <?php 
 
-class User {
-	public $username;
-	public $pwd;
-	public $name;
-	public $email;
-
-
-	public function loadRow($row) {
-		$this->username = $row['username'];
-		$this->pwd = $row['pwd'];
-		$this->name = $row['name'];
-		$this->email = $row['email'];
-	}
-
-	public function loadParams($username, $pwd, $name, $email) {
-		$this->username = $username;
-		$this->pwd = $pwd;
-		$this->name = $name;
-		$this->email = $email;
-	}
-}
-
 class UsersRepo {
 	private $db;
 
@@ -37,25 +15,23 @@ class UsersRepo {
 	public function getUser($username) {
 		$this->getUserStmt->execute(array($username));
 		if($this->getUserStmt->rowCount()>0) {
-			$user = new User(); 
-			$user->loadRow($this->getUserStmt->fetch());
-			return $user;
+			return $this->getUserStmt->fetch();
 		}
 		return NULL;
 	}
 
 	public function checkUser($username, $pwd) {
 		$user=$this->getUser($username);
-		return $user && $user->pwd==$pwd;
+		return $user && $user['pwd']==$pwd;
 	}
 
-	public function addUser($user) {
-		if (!$this->getUser($user->username)) {
+	public function addUser($username, $pwd, $name, $email) {
+		if (!$this->getUser($username)) {
 			$this->addUserStmt->execute(array(
-				$user->username,
-				$user->pwd,
-				$user->name,
-				$user->email,				
+				$username,
+				$pwd,
+				$name,
+				$email,				
 			));
 			return true;
 		}
