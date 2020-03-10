@@ -70,6 +70,7 @@ input[type='text'], input[type='password'] {
 	background-color: #ffffcc;
 	border: 1px solid grey;
 	padding: 15px;
+	margin: 15px 0;
 }
 .article-header {
 	padding: 5px;
@@ -89,6 +90,11 @@ input[type='text'], input[type='password'] {
 	justify-content: space-between;
 	align-items: center;
 	padding: 5px;
+}
+
+.article-meta {
+	font-style: italic;
+	font-size: smaller;
 }
 
 

@@ -15,28 +15,28 @@ class PostsRepo {
 		$this->getPostStmt = $db->prepare('SELECT * FROM posts WHERE id=?');
 		$this->addPostStmt = $db->prepare('INSERT INTO posts(title, body, username) VALUES(?,?,?)');
 		$this->updatePostStmt = $db->prepare('UPDATE posts SET title=?, body=? WHERE id=?');
-		$this->deletePostStmt = $db->prepare('DELETE posts WHERE id=?');
+		$this->deletePostStmt = $db->prepare('DELETE FROM posts WHERE id=?');
 	}
 
-	public getPosts() {
+	public function getPosts() {
 		$this->getPostsStmt->execute();
 		return $this->getPostsStmt->fetchAll();
 	}
 
-	public getPost($id) {
+	public function getPost($id) {
 		$this->getPostStmt->execute(array($id));
 		return $this->getPostStmt->fetch();
 	}
 
-	public addPost($title, $body, $username) {
+	public function addPost($title, $body, $username) {
 		$this->addPostStmt->execute(array($title, $body, $username));
 	}
 
-	public updatePost($id, $title, $body) {
+	public function updatePost($id, $title, $body) {
 		$this->updatePostStmt->execute(array($title, $body, $id));
 	}	
 
-	public deletePost($id) {
+	public function deletePost($id) {
 		$this->deletePostStmt->execute(array($id));
 	}
 }

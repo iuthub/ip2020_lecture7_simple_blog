@@ -4,23 +4,32 @@
 		
 <!-- main part -->
 <div class="main">
-	<div class="article">
-		<div class="article-header">
-			<h2>Title</h2>
-		</div>
-		<div class="article-body">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad nisi beatae praesentium quia temporibus aliquid facere expedita sint, molestias hic illo harum aspernatur sequi repudiandae doloremque tenetur, veritatis animi doloribus!
-		</div>
-		<div class="article-footer">
-			<div class="article-meta">
-				Edit: date
+
+	<?php foreach ($postsRepo->getPosts() as $post): ?>
+		<div class="article">
+			<div class="article-header">
+				<h2><?= $post['title'] ?></h2>
 			</div>
-			<div class="article-actions">
-				<a href="edit.php?id=">Edit</a> | 
-				<a href="delete.php?id=">Delete</a>
+			<div class="article-body">
+				<?= $post['body'] ?>
+			</div>
+			<div class="article-footer">
+				<div class="article-meta">
+					Edit: <?= $post['postDate'] ?>, Author: <?= $post['username'] ?>
+				</div>
+				<div class="article-actions">
+				<?php if ($_SESSION['isAuth']): ?>
+					<a href="edit.php?id=<?=$post['id']?>">Edit</a> | 
+					<a href="delete.php?id=<?=$post['id']?>">Delete</a>
+				<?php endif ?>
+
+					
+				</div>
 			</div>
 		</div>
-	</div>
+	<?php endforeach ?>
+
+	
 </div>
 
 <?php include('footer.php'); ?>
